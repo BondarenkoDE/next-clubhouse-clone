@@ -1,6 +1,6 @@
 import EnterPhoneStep from '../components/steps/EnterPhoneStep';
 
-export default function Home() {
+export default function RoomPage() {
   return (
     <div>
       <EnterPhoneStep />

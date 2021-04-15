@@ -7,7 +7,27 @@ import { Avatar } from '../../Avatar';
 
 import styles from './ChooseAvatarStep.module.scss';
 
-export const ChooseAvatarStep = () => {
+export const ChooseAvatarStep: React.FC = () => {
+  const inputFileRef = React.useRef<HTMLInputElement>(null);
+  const [avatarUrl, setAvatarUrl] = React.useState<string>(
+    'https://klike.net/uploads/posts/2018-06/1528720172_1.jpg',
+  );
+
+  //изменение изображения при регистрации
+  const handleChangeImage = (event: Event): void => {
+    const file = (event.target as HTMLInputElement).files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file); //спец.метод для получения ссылки на картинку
+      setAvatarUrl(imageUrl);
+    }
+  };
+
+  React.useEffect(() => {
+    if (inputFileRef.current) {
+      inputFileRef.current.addEventListener('change', handleChangeImage);
+    }
+  }, []);
+
   return (
     <div className={styles.block}>
       <StepInfo
@@ -24,7 +44,7 @@ export const ChooseAvatarStep = () => {
             Choose a different photo
           </label>
         </div>
-        <input id="image" type="file" hidden />
+        <input id="image" ref={inputFileRef} type="file" hidden />
         <Button>
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />

@@ -7,7 +7,18 @@ import { StepInfo } from '../../StepInfo';
 
 import styles from './EnterPhoneStep.module.scss';
 
+type InputValueState = {
+  formattedValue: string;
+  value: string;
+};
+
 const EnterPhoneStep = () => {
+  const [values, setValues] = React.useState<InputValueState>({} as InputValueState);
+
+  const nextDisabled = !values.formattedValue || values.formattedValue.includes('_');
+
+  console.log(values);
+
   return (
     <div className={styles.block}>
       <StepInfo
@@ -23,9 +34,11 @@ const EnterPhoneStep = () => {
             format="+# (###) ###-##-##"
             mask="_"
             placeholder="+7 (999) 333-22-11"
+            value={values.value}
+            onValueChange={({ formattedValue, value }) => setValues({ formattedValue, value })}
           />
         </div>
-        <Button>
+        <Button disabled={nextDisabled}>
           Next
           <img className="d-ib ml-10" src="/static/arrow.svg" />
         </Button>
