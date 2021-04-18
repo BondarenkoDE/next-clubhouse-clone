@@ -4,9 +4,9 @@ import React from 'react';
 import styles from './Button.module.scss';
 
 interface ButtonProps {
-  disabled: boolean;
+  disabled?: boolean;
   color?: 'green' | 'grey';
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 }
 
