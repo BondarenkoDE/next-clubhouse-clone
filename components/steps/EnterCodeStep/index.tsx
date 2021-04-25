@@ -13,8 +13,6 @@ export const EnterCodeStep = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [codes, setCodes] = React.useState(['', '', '', '']);
 
-  console.log(codes.length);
-
   const nextDisabled = codes.some((v) => !v); //проверка "если какого-то значения нет, то кнопка неактивна"
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {

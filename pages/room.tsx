@@ -1,4 +1,4 @@
-import EnterPhoneStep from '../components/steps/EnterPhoneStep';
+import { EnterPhoneStep } from '../components/steps/EnterPhoneStep';
 
 export default function RoomPage() {
   return (
